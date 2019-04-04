@@ -1,16 +1,20 @@
 'use strict';
 
-const App = ({items}) => (
+const App = ({items}) => {
+  return (
   <main>
-    {items.map(item => {
-      switch(item.type) {
-        case 'unisex':
-          return <Item color="black" item={item} />;
-        case 'male':
-          return <Item color="blue" item={item} />;
-        case 'female':
-          return <Item color="orange" item={item} />;
-      }
-    })}
+    {items.map((item, i) => 
+      <ListItem key={i} item={item} />     
+    )}
   </main>
-);
+)};
+
+const ListItem = ({item}) => {
+  const colors = {
+    unisex: "black",
+    male: "blue",
+    female: "orange"
+  }
+
+  return <Item color={colors[item.type]} item={item} />;
+}
