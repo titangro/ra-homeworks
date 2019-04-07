@@ -8,8 +8,8 @@ class App extends React.Component {
       selected: 'All',
       projects: this.props.projects
     }
-  } 
-
+  }
+  
   render() {
     return (
       <div>
@@ -17,7 +17,7 @@ class App extends React.Component {
           filters={this.props.filters}
           selected = {this.state.selected}
           onSelectFilter={
-            filter => 
+            filter =>
             {
               console.log(filter);
               this.setState({
