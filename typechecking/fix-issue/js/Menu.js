@@ -1,6 +1,7 @@
 'use strict';
 
-const Menu = (props) => {
+const Menu = (props) => {  
+  console.log(props)
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">{props.title}{' '}

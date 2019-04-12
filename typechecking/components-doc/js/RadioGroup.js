@@ -16,3 +16,7 @@ const RadioGroup = props => {
     </div>
   )
 };
+
+RadioGroup.propTypes = {
+  value: PropTypes.oneOf(['муж', 'жен'])
+};

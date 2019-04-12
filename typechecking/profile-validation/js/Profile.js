@@ -27,3 +27,21 @@ const Profile = props => {
     </div>
   );
 };
+
+Profile.propTypes = {
+  birthday: (props, propName, componentName) => {
+    if (props[propName] && !/^[0-9]{1,4}\-[0-9]{1,2}\-[0-9]{1,2}$/.test(props[propName])) {
+      return new Error(`Недопустимое значение ${propName} предоставлен ${componentName}. Необходимо значение вида «YYYY-MM-DD». Проверка не удалась.`);
+    }
+    return null
+  },
+  url: (props, propName, componentName) => {
+    if (/https\:\/\/vk.com\/{1}(id[0-9]+|[A-Za-z0-9_-]+)$/.test(props[propName].slice(15))) {
+      return new Error(`Недопустимое значение ${propName} предоставлен ${componentName}. Необходимо значение вида «https://vk.com/(id[0-9]+|[A-Za-z0-9_-]+)». Проверка не удалась.`);
+    }
+  }
+}
+
+Profile.defaultProps = {
+  img: "./images/profile.jpg"
+}

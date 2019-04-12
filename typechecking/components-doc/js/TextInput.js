@@ -9,3 +9,7 @@ const TextInput = props => {
     </div>
   )
 };
+
+TextInput.propTypes = {
+  value: PropTypes.string
+};

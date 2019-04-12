@@ -5,7 +5,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
       first_name: '',
       last_name: '',
       birthday: '',
