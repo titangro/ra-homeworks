@@ -4,6 +4,10 @@ class Cart extends React.Component {
     return (
       <CartView {...this.props} />
     );
+  }  
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.isOpen !== this.props.isOpen || nextProps.isOpen && nextProps.items.length !== this.props.items.length;    
   }
 
 }
