@@ -5,13 +5,45 @@ const List = props => {
         switch (item.type) {
             case 'video':
                 return (
-                    <Video {...item} />
+                    <ChangedVideo {...item} />
                 );
 
             case 'article':
                 return (
-                    <Article {...item} />
+                    <ChangedArticle {...item} />
                 );
         }
     });
 };
+
+const ChangedVideo = updgade(
+    Video   
+)
+
+const ChangedArticle = updgade(
+    Article
+)
+
+function updgade(Component, propName) {
+    return class extends React.Component {
+        showComponent() {
+            if (this.props.views >= 1000) 
+                return (
+                    <Popular >
+                        <Component {...this.props} />
+                    </Popular>
+                );            
+            if (this.props.views < 100) 
+                return (
+                    <New >
+                        <Component {...this.props} />
+                    </New>
+                );      
+            return <Component {...this.props} />;
+        }
+        
+        render() {
+            return this.showComponent();            
+        }
+    }
+}
