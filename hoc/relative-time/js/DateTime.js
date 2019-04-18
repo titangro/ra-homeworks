@@ -35,6 +35,6 @@ function getInfoDateString(date) {
     }
 }
 
-function getDateString(date) {
+/*function getDateString(date) {
     return `${date.toISOString().slice(0, 10)} ${date.toLocaleTimeString()}`;
-}
+}*/
