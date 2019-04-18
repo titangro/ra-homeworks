@@ -17,10 +17,34 @@ class App extends React.Component {
     render() {
         return (
             <div id="app">
-                <MonthTable list={this.state.list} />
-                <YearTable list={this.state.list} />
-                <SortTable list={this.state.list} />
+                <MonthTableList list={this.state.list} />
+                <YearTableList list={this.state.list} />
+                <SortTableList list={this.state.list} />
             </div>
         );
     }
 };
+
+const MonthTableList = withData(
+    MonthTable
+);
+
+const YearTableList = withData(
+    YearTable
+);
+
+const SortTableList = withData(
+    SortTable
+);
+
+function withData(Component) {
+    return class extends React.Component {
+        constructor(...args){
+            super(...args)
+            console.log(...args)
+        }
+        render() {            
+            return <Component list={this.args} />;
+        }
+    }
+}
