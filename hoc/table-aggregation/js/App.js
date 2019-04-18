@@ -26,25 +26,46 @@ class App extends React.Component {
 };
 
 const MonthTableList = withData(
-    MonthTable
+    MonthTable,
+    'month'
 );
 
 const YearTableList = withData(
-    YearTable
+    YearTable,
+    'year'
 );
 
 const SortTableList = withData(
-    SortTable
+    SortTable,
+    ''
 );
 
-function withData(Component) {
+function withData(Component, propName) {
     return class extends React.Component {
-        constructor(...args){
-            super(...args)
-            console.log(...args)
+        getSort() {
+            if (propName === 'month') {
+                return this.props.list.map(item => {
+                    const obj = {};
+                    obj.month = (new Date(item.date)).toLocaleString('en', {month: 'short'});
+                    obj.amount = item.amount;
+                    return obj
+                })
+            }
+            if (propName === 'year') {
+                return this.props.list.map(item => {
+                    const obj = {};
+                    obj.year = (new Date(item.date)).getFullYear();
+                    obj.amount = item.amount;
+                    return obj
+                })
+            }
+            return this.props.list;
         }
-        render() {            
-            return <Component list={this.args} />;
+
+        render() {
+            const list = this.getSort();
+            console.log(list);
+            return <Component list={list} />;
         }
     }
 }
